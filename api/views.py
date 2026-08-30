@@ -1,9 +1,8 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework import viewsets
+from .models import Produto
+from .serializers import ProdutoSerializer
 
 
-@api_view(['GET'])
-def inicio(request):
-    return Response({
-        'mensagem': 'API funcionando!'
-    })
+class ProdutoViewSet(viewsets.ModelViewSet):
+    queryset = Produto.objects.all()
+    serializer_class = ProdutoSerializer
